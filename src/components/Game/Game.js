@@ -3,6 +3,7 @@ import React from 'react';
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import AllGuesses from './AllGuesses';
+import Guess from './Guess';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -15,6 +16,7 @@ function Game() {
   const userInput = input.toUpperCase();
   return (
     <div>
+      <Guess userInput={inputArr} />
       <form
         onSubmit={(event) => {
           event.preventDefault();
