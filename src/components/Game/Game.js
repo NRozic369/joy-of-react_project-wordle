@@ -16,7 +16,7 @@ function Game() {
   const userInput = input.toUpperCase();
   return (
     <div>
-      <Guess userInput={inputArr} />
+      <Guess userInput={inputArr} answer={answer} />
       <form
         onSubmit={(event) => {
           event.preventDefault();

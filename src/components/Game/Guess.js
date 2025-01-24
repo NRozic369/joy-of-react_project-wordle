@@ -1,20 +1,28 @@
 import { range } from '../../utils';
-import { checkGuess } from '../../game-helpers';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { checkGuess } from '../../game-helpers';
 
-function Guess({ userInput }) {
-  const isEmpty = userInput.length === 0;
-  function checkGuess({ userInput }, answer) {}
+function Guess({ userInput, answer }) {
+  const isArrayEmpty = userInput.length === 0;
+
+  const result = userInput.map((input) => checkGuess(input, answer));
 
   return (
     <div className="guess-results">
       {range(NUM_OF_GUESSES_ALLOWED).map((rowIndex) => (
         <p key={rowIndex} className="guess">
           {range(5).map((index) => (
-            <span key={index} className="cell">
-              {isEmpty || userInput[rowIndex] === undefined
+            <span
+              key={index}
+              className={
+                isArrayEmpty || result[rowIndex] === undefined
+                  ? 'cell'
+                  : 'cell ' + result[rowIndex][index].status
+              }
+            >
+              {isArrayEmpty || result[rowIndex] === undefined
                 ? ''
-                : userInput[rowIndex].charAt(index)}
+                : result[rowIndex][index].letter}
             </span>
           ))}
         </p>
