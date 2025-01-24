@@ -4,7 +4,6 @@ import { checkGuess } from '../../game-helpers';
 
 function Guess({ userInput, answer }) {
   const isArrayEmpty = userInput.length === 0;
-
   const result = userInput.map((input) => checkGuess(input, answer));
 
   return (
